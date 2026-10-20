@@ -353,7 +353,7 @@
           toast('Elenco cambiato nel frattempo: controllalo nuovamente.','error');return;
         }
         if(!confirm('Confermi l’importazione per '+pre.course.name+'?\n'+plan.create.length+' nuove schede, '+plan.attach.length+' associazioni. Nessun pagamento verrà modificato.'))return;
-        loading(btn,true,'Importazione...');
+        btn.textContent='Importazione...';
         for(const row of plan.create){
           await addDoc(collection(state.db,'rcMiniStudents'),{...newStudent(),nome:row.nome,cognome:row.cognome,courseIds:[pre.course.id],createdAt:serverTimestamp(),updatedAt:serverTimestamp()});created++;
         }
